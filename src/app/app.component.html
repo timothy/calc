@@ -72,7 +72,7 @@
     Calculate
   </button>
   <br>
-  <h2 class="text-center" *ngIf="calcType === 'min'">
+  <h2 class="text-center">
     <span class="label label-info">Amount Remaining:</span>
     <p class="btn btn-primary btn-lg" type="button">
       Hours: <span class="badge">{{time.hours}}</span>
@@ -80,12 +80,10 @@
     <p class="btn btn-primary btn-lg" type="button">
       Min: <span class="badge">{{time.min}}</span>
     </p>
-  </h2>
-
-  <h2 class="text-center" *ngIf="calcType === 'decimal'">
-    <span class="label label-info">Amount Remaining:</span>
+    <span class="glyphicon glyphicon-random"></span>
     <p class="btn btn-primary btn-lg" type="button">
-      Decimal hours: <span class="badge">{{time.decimal}}</span>
+      Decimal hours: <span class="badge">{{time.decimal.toFixed(2)}}</span>
     </p>
   </h2>
+  <br>
 </div>
