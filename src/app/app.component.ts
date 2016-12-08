@@ -55,15 +55,17 @@ export class AppComponent {
    * @param newVal:string == the new type of calculation
    */
   changeCalc(newVal:string) {
-    //set btn active
-    this.calcType = newVal;
+    if(newVal !== this.calcType){
+      //set btn active
+      this.calcType = newVal;
 
-    this.mergeTime();
+      this.mergeTime();
 
-    for (let prop in this.btnActive) {
-      this.btnActive[prop] = '';
+      for (let prop in this.btnActive) {
+        this.btnActive[prop] = '';
+      }
+      this.btnActive[newVal] = 'active';
     }
-    this.btnActive[newVal] = 'active';
   }
 
   /**
