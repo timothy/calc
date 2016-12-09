@@ -5,7 +5,7 @@ I used [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.
 
 ## Development progress
 I originally made this app using **Angular 1.4.0** and **JavaScript/ECMAScript 5**. I have since rewrote it using **Angular 2.2.3** and **Typescript ~2.0.3**. When I rewrote it, I added some new features and cleaned up the code a lot. Still needs some work but all the calculations should be correct(hopefully, I still need to write tests).
- 
+
 Next steps will be to abstract the basic calculator functionality into a reusable and separate class that the component will use... After this I need to create automated tests to check the edge case scenarios.
 
 ## Development server
@@ -27,10 +27,6 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 Before running the tests make sure you are serving the app via `ng serve`.
-
-## Deploying to Github Pages
-
-Run `ng github-pages:deploy` to deploy to Github Pages.
 
 ## Further help
 

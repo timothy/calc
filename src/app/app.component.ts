@@ -12,7 +12,7 @@ export class AppComponent {
   readonly week: number = 7;
   readonly milliMin: number = 60 * 1000;
   readonly milliHour: number = 60 * this.milliMin;
-  readonly totalTime: number = 40;// this is total time in millisecond
+  readonly totalTime: number = 40;// this is total hour amount of time for the entire week
 
   //---used in the view---
   days: Array<DayTimeTracker> = [];
@@ -24,6 +24,9 @@ export class AppComponent {
     }
   }
 
+  /**
+   * This will calculate decimal time and hr/min time based on decimal input
+   */
   calcDecTime() {
     let dTime: number = this.totalTime;
     let hrTime: number = this.totalTime * this.milliHour;
@@ -41,6 +44,9 @@ export class AppComponent {
     this.time.min = Math.floor((hrTime % this.milliHour) / this.milliMin);
   }
 
+  /**
+   * This will calculate decimal time and hr/min time based on hr/min input
+   */
   CalcTime() {
     let dTime: number = this.totalTime;
     let hrTime: number = this.totalTime * this.milliHour;
