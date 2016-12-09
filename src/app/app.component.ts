@@ -20,7 +20,7 @@ export class AppComponent {
 
   constructor() {
     for (let i = 0; i < this.week; i++) {
-      this.days.push({day: this.DOW[i], hours: 0, min: 0, decimalTime: 0, overflow: 0});
+      this.days.push({day: this.DOW[i], hours: 0, min: 0, decimalTime: 0});
     }
   }
 

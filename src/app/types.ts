@@ -12,6 +12,5 @@ interface DayTimeTracker {
   hours: number;
   min: number;
   decimalTime: number;
-  overflow:number;
 }
 export {TotalTime, DayTimeTracker}
