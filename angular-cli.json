@@ -18,9 +18,15 @@
       "prefix": "app",
       "mobile": false,
       "styles": [
-        "styles.css","../node_modules/bootstrap/dist/css/bootstrap.css"
+        "styles.css",
+        "../bower_components/bootstrap/dist/css/bootstrap.css",
+        "../bower_components/bootstrap-timepicker/css/timepicker.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../bower_components/jquery/dist/jquery.js",
+        "../bower_components/bootstrap/dist/js/bootstrap.js",
+        "../bower_components/bootstrap-timepicker/js/bootstrap-timepicker.js"
+      ],
       "environments": {
         "source": "environments/environment.ts",
         "dev": "environments/environment.ts",
