@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {DayTimeTracker, TotalTime} from "./types";
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,7 +17,7 @@ export class AppComponent {
 
   //---used in the view---
   days: Array<DayTimeTracker> = [];
-  time: TotalTime = {decimal: 40, hours: 40, min: 0};
+  time: TotalTime = {decimal: 40, hours: 40, min: 0, toDate: new Date(), fromDate: new Date()};
 
   constructor() {
     for (let i = 0; i < this.week; i++) {
@@ -39,9 +40,12 @@ export class AppComponent {
       hrTime -= this.days[c].hours * this.milliHour;
       hrTime -= this.days[c].min * this.milliMin;
     }
-    this.time.decimal = dTime;
-    this.time.hours = Math.floor(hrTime / this.milliHour);
-    this.time.min = Math.floor((hrTime % this.milliHour) / this.milliMin);
+
+    this.time = {
+      decimal: dTime,
+      hours: Math.floor(hrTime / this.milliHour),
+      min: Math.floor((hrTime % this.milliHour) / this.milliMin)
+    };
   }
 
   /**
@@ -63,6 +67,10 @@ export class AppComponent {
       min: Math.floor((hrTime % this.milliHour) / this.milliMin),
       decimal: dTime
     };
+  }
+
+  calcToFromTime(){
+
   }
 
 }

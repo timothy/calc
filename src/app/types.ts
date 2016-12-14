@@ -5,6 +5,8 @@ interface TotalTime {
   decimal: number;
   hours: number;
   min: number;
+  fromDate?: Date;
+  toDate?: Date;
 }
 
 interface DayTimeTracker {
