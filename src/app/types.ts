@@ -1,12 +1,10 @@
 /**
- * Created by ^_^ on 12/7/2016.
+ * Created by Timothy on 12/7/2016.
  */
 interface TotalTime {
   decimal: number;
   hours: number;
   min: number;
-  fromDate?: Date;
-  toDate?: Date;
 }
 
 interface DayTimeTracker {
@@ -14,5 +12,8 @@ interface DayTimeTracker {
   hours: number;
   min: number;
   decimalTime: number;
+  index:number;
+  fromDate?: Date;
+  toDate?: Date;
 }
 export {TotalTime, DayTimeTracker}
