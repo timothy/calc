@@ -28,7 +28,7 @@ export class Validate {
    * @param checkItem a potential number
    * @returns {number}
    */
-  static Hour(checkItem: any): number {
+  static Integer(checkItem: any): number {
     if (isNaN(checkItem)) {
       if (isNaN(parseInt(checkItem.toString().replace(/\D/g, '')))) {
         return 0;
@@ -40,9 +40,5 @@ export class Validate {
     }
   }
 
-  //this is an overload of hours
-  static Min(checkItem: any): number {
-    return Validate.Hour(checkItem);
-  }
 
 }

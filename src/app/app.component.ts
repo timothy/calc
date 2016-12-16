@@ -47,8 +47,8 @@ export class AppComponent {
   calcDecTime(index) {
     //dirty check and clean numbers
     this.days[index].decimalTime = Validate.Decimal(this.days[index].decimalTime);
-    this.days[index].hours = Validate.Hour(this.days[index].hours);
-    this.days[index].min = Validate.Min(this.days[index].min);
+    this.days[index].hours = Validate.Integer(this.days[index].hours);
+    this.days[index].min = Validate.Integer(this.days[index].min);
 
     //if input value changes, old input value should be added to total before new value is subtracted from total
     if (this.oldTime[index]) {
@@ -64,7 +64,7 @@ export class AppComponent {
     //Calculate end totals with new subtracted amount
     this.time.decimal -= this.days[index].decimalTime;//todo find out why totals == NaN
     this.time.hours = Math.floor(this.time.decimal);
-    this.time.min = Math.floor(this.time.decimal * 60) % 60;
+    this.time.min =  Math.floor((this.time.decimal - Math.floor(this.time.decimal)) * 60);//ToDO change other min convertion
 
     //need to save state to reference in order to avoid looping over all calculations each time
     this.oldTime[index] = this.days[index].decimalTime;
@@ -76,8 +76,8 @@ export class AppComponent {
   CalcTime(index) {
     //dirty check and clean numbers
     this.days[index].decimalTime = Validate.Decimal(this.days[index].decimalTime);
-    this.days[index].hours = Validate.Hour(this.days[index].hours);
-    this.days[index].min = Validate.Min(this.days[index].min);
+    this.days[index].hours = Validate.Integer(this.days[index].hours);
+    this.days[index].min = Validate.Integer(this.days[index].min);
 
     //if input value changes, old input value should be added to total before new value is subtracted from total
     if (this.oldTime[index]) {
