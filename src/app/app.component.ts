@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {DayTimeTracker, TotalTime} from "./types";
 import {Validate} from "./classes/TimeValidator";
+import {ConvertTime} from "./classes/ConvertTime";
 
 @Component({
   selector: 'app-root',
@@ -45,26 +46,26 @@ export class AppComponent {
    * This will calculate decimal time and hr/min time based on decimal input
    */
   calcDecTime(index) {
-    //dirty check and clean numbers
-    this.days[index].decimalTime = Validate.Decimal(this.days[index].decimalTime);
+    //dirty check and clean numbers// no longer needed...
+/*    this.days[index].decimalTime = Validate.Decimal(this.days[index].decimalTime);
     this.days[index].hours = Validate.Integer(this.days[index].hours);
-    this.days[index].min = Validate.Integer(this.days[index].min);
+    this.days[index].min = Validate.Integer(this.days[index].min);*/
 
     //if input value changes, old input value should be added to total before new value is subtracted from total
     if (this.oldTime[index]) {
       this.time.decimal += this.oldTime[index];
-      this.time.hours = Math.floor(this.time.decimal);
-      this.time.min = Math.floor(this.time.decimal * 60) % 60;
+      this.time.hours = ConvertTime.Dec2Hour(this.time.decimal);
+      this.time.min = ConvertTime.Dec2Min(this.time.decimal);
     }
 
     //convert decimal to hour min
-    this.days[index].hours = Math.floor(this.days[index].decimalTime);
-    this.days[index].min = Math.floor(this.days[index].decimalTime * 60) % 60;
+    this.days[index].hours = ConvertTime.Dec2Hour(this.days[index].decimalTime);
+    this.days[index].min = ConvertTime.Dec2Min(this.days[index].decimalTime);
 
     //Calculate end totals with new subtracted amount
     this.time.decimal -= this.days[index].decimalTime;//todo find out why totals == NaN
-    this.time.hours = Math.floor(this.time.decimal);
-    this.time.min =  Math.floor((this.time.decimal - Math.floor(this.time.decimal)) * 60);//ToDO change other min convertion
+    this.time.hours = ConvertTime.Dec2Hour(this.time.decimal);
+    this.time.min =  ConvertTime.Dec2Min(this.time.decimal);//ToDO change other min convertion
 
     //need to save state to reference in order to avoid looping over all calculations each time
     this.oldTime[index] = this.days[index].decimalTime;
@@ -74,29 +75,30 @@ export class AppComponent {
    * This will calculate decimal time and hr/min time based on hr/min input
    */
   CalcTime(index) {
-    //dirty check and clean numbers
-    this.days[index].decimalTime = Validate.Decimal(this.days[index].decimalTime);
-    this.days[index].hours = Validate.Integer(this.days[index].hours);
-    this.days[index].min = Validate.Integer(this.days[index].min);
+    //dirty check and clean numbers//this is now done as part of the number conversion
+    // this.days[index].decimalTime = Validate.Decimal(this.days[index].decimalTime);
+    // this.days[index].hours = Validate.Integer(this.days[index].hours);
+    // this.days[index].min = Validate.Integer(this.days[index].min);
 
     //if input value changes, old input value should be added to total before new value is subtracted from total
     if (this.oldTime[index]) {
       this.time.decimal += this.oldTime[index];
-      this.time.hours = Math.floor(this.time.decimal);
-      this.time.min = Math.floor(this.time.decimal * 60) % 60;
+      this.time.hours = ConvertTime.Dec2Hour(this.time.decimal);
+      this.time.min = ConvertTime.Dec2Min(this.time.decimal);
     }
 
     //convert hour min to decimal
-    this.days[index].decimalTime = ((this.days[index].hours * this.milliHour) + (this.days[index].min * this.milliMin)) / this.milliHour;
+    this.days[index].decimalTime = ConvertTime.HourMin2Dec(this.days[index].hours, this.days[index].min);
+    //((this.days[index].hours * this.milliHour) + (this.days[index].min * this.milliMin)) / this.milliHour;
 
     //convert hours and min to resolve a fraction/over 60min case in hours or min
-    this.days[index].hours = Math.floor(this.days[index].decimalTime);
-    this.days[index].min = Math.floor(this.days[index].decimalTime * 60) % 60;
+    this.days[index].hours = ConvertTime.Dec2Hour(this.days[index].decimalTime);
+    this.days[index].min = ConvertTime.Dec2Min(this.days[index].decimalTime);
 
     //Calculate end totals with new subtracted amount
     this.time.decimal -= this.days[index].decimalTime;
-    this.time.hours = Math.floor(this.time.decimal);
-    this.time.min = Math.floor(this.time.decimal * 60) % 60;
+    this.time.hours = ConvertTime.Dec2Hour(this.time.decimal);
+    this.time.min = ConvertTime.Dec2Min(this.time.decimal);
 
     //need to save state to reference in order to avoid looping over all calculations each time
     this.oldTime[index] = this.days[index].decimalTime;
@@ -121,9 +123,5 @@ export class AppComponent {
     this.oldTime[index] = this.days[index].decimalTime;
   }
 
-  numberValidator(index: number) {
-
-
-  }
 
 }
