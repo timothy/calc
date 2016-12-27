@@ -12,8 +12,8 @@
       <div class="panel-body">
         <div class="row">
           <span class="col-lg-2 col-md-2 col-sm-2"></span>
-          <datetime (placeholder)="'Start Time'" class="col-lg-4 col-md-4 col-sm-4 col-xs-12" [timepicker]="startTimeOpts" [datepicker]="false" [(ngModel)]="day.fromDate">start</datetime>
-          <datetime (placeholder)="'End Time'" class="col-lg-4 col-md-4 col-sm-4 col-xs-12" [timepicker]="endTimeOpts" [datepicker]="false" [(ngModel)]="day.toDate"></datetime>
+          <datetime (click)="calcToFromTime(day.index)" (keyup)="calcToFromTime(day.index)" (placeholder)="'Start Time'" class="col-lg-4 col-md-4 col-sm-4 col-xs-12" [timepicker]="startTimeOpts" [datepicker]="false" [(ngModel)]="day.startDate">start</datetime>
+          <datetime (click)="calcToFromTime(day.index)" (keyup)="calcToFromTime(day.index)" (placeholder)="'End Time'" class="col-lg-4 col-md-4 col-sm-4 col-xs-12" [timepicker]="endTimeOpts" [datepicker]="false" [(ngModel)]="day.endDate"></datetime>
         </div>
 
         <div class="row">

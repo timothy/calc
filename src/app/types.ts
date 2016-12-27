@@ -13,7 +13,7 @@ interface DayTimeTracker {
   min: number;
   decimalTime: number;
   index:number;
-  fromDate?: Date;
-  toDate?: Date;
+  startDate?: Date;
+  endDate?: Date;
 }
 export {TotalTime, DayTimeTracker}

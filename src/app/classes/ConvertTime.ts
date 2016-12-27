@@ -13,6 +13,10 @@ export class ConvertTime {//TODO add time conversions and add to project
     return ((hours * this.milliHour) + (min * this.milliMin)) / this.milliHour;
   }
 
+  static MiliSec2Dec(milliSec: number):number {//todo add validation
+    return milliSec / this.milliHour;
+  }
+
   static Dec2Hour(decimalTime: number): number {
     decimalTime = Validate.Decimal(decimalTime);
     return Math.floor(decimalTime);

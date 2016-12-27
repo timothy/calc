@@ -99,17 +99,25 @@ export class AppComponent {
 
   //TODO finish to/from time calculation
   calcToFromTime(index) {
-     //if old time then subtract and add new time.
-    this.timeCheck(index);
+    //make sure there is information in both from and to before trying to work with it.
+    if(this.days[index].endDate && this.days[index].startDate && this.days[index].endDate.getTime() > this.days[index].startDate.getTime()){
+      //if old time then subtract and add new time.
+      this.timeCheck(index);
 
-    this.days[index].decimalTime = ((this.days[index].hours * this.milliHour) + (this.days[index].min * this.milliMin)) / this.milliHour;
+      let result:number = this.days[index].endDate.getTime() - this.days[index].startDate.getTime();
 
-    this.time.decimal -= this.days[index].decimalTime;
-    this.time.hours = Math.floor(this.time.decimal);
-    this.time.min = Math.floor(this.time.decimal * 60) % 60;
+      console.log(result);
+      console.log(ConvertTime.MiliSec2Dec(result));
+      console.log("this is the amount of hours between the to and from time...");
 
-    this.oldTime[index] = this.days[index].decimalTime;
+      this.time.decimal -= this.days[index].decimalTime;
+      this.time.hours = Math.floor(this.time.decimal);
+      this.time.min = Math.floor(this.time.decimal * 60) % 60;
+
+      this.oldTime[index] = this.days[index].decimalTime;
+    }
   }
+
 
   timeCheck(index) {
     if (this.oldTime[index]) {
