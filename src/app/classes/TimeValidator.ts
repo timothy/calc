@@ -1,5 +1,5 @@
 /**
- * Created by ^_^ on 12/15/2016.
+ * Created by Timothy on 12/15/2016.
  */
 
 export class Validate {
@@ -11,8 +11,8 @@ export class Validate {
    * @returns {number}
    */
   static Decimal(checkItem: any): number {
-    if (isNaN(checkItem)) {
-      if (isNaN(parseFloat(checkItem.toString().replace(/[^0-9.]/g, '')))) {
+    if (isNaN(checkItem) || !parseFloat(checkItem)) {
+      if (isNaN(parseFloat(checkItem.toString().replace(/[^0-9.]/g, ''))) || !parseFloat(checkItem.toString().replace(/[^0-9.]/g, ''))) {
         return 0;
       } else {
         return parseFloat(checkItem.toString().replace(/[^0-9.]/g, ''));
@@ -29,8 +29,8 @@ export class Validate {
    * @returns {number}
    */
   static Integer(checkItem: any): number {
-    if (isNaN(checkItem)) {
-      if (isNaN(parseInt(checkItem.toString().replace(/\D/g, '')))) {
+    if (isNaN(checkItem) || !parseInt(checkItem)) {
+      if (isNaN(parseInt(checkItem.toString().replace(/\D/g, ''))) || !parseInt(checkItem.toString().replace(/\D/g, ''))) {
         return 0;
       } else {
         return parseInt(checkItem.toString().replace(/\D/g, ''));

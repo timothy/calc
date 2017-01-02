@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {DayTimeTracker, TotalTime} from "./types";
-//import {Validate} from "./classes/TimeValidator"; no longer needed -- this is now happening as part of the convert time class
+import {Validate} from "./classes/TimeValidator";// no longer needed -- this is now happening as part of the convert time class
 import {ConvertTime} from "./classes/ConvertTime";
 
 @Component({
@@ -46,6 +46,8 @@ export class AppComponent {
     //clear start and end times... does not make sense to keep them user manually inputs time amount
     this.days[index].endDate = null;
     this.days[index].startDate = null;
+
+    this.days[index].decimalTime = Validate.Decimal(this.days[index].decimalTime);
 
     //convert decimal to hour min
     this.days[index].hours = ConvertTime.Dec2Hour(this.days[index].decimalTime);
