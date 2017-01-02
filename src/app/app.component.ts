@@ -39,43 +39,29 @@ export class AppComponent {
     }
   }
 
-
   /**
    * This will calculate decimal time and hr/min time based on decimal input
    */
   calcDecTime(index) {
-    //dirty check and clean numbers// no longer needed...
-    /*    this.days[index].decimalTime = Validate.Decimal(this.days[index].decimalTime);
-     this.days[index].hours = Validate.Integer(this.days[index].hours);
-     this.days[index].min = Validate.Integer(this.days[index].min);*/
-
-    //if old time then subtract and add new time.
-    this.timeCheck(index);
+    //clear start and end times... does not make sense to keep them user manually inputs time amount
+    this.days[index].endDate = null;
+    this.days[index].startDate = null;
 
     //convert decimal to hour min
     this.days[index].hours = ConvertTime.Dec2Hour(this.days[index].decimalTime);
     this.days[index].min = ConvertTime.Dec2Min(this.days[index].decimalTime);
 
     //Calculate end totals with new subtracted amount
-    this.time.decimal -= this.days[index].decimalTime;//todo find out why totals == NaN
-    this.time.hours = ConvertTime.Dec2Hour(this.time.decimal);
-    this.time.min = ConvertTime.Dec2Min(this.time.decimal);//ToDO change other min conversion
-
-    //need to save state to reference in order to avoid looping over all calculations each time
-    this.oldTime[index] = this.days[index].decimalTime;
+    this.calcEndTotals(index);
   }
 
   /**
    * This will calculate decimal time and hr/min time based on hr/min input
    */
   CalcTime(index) {
-    //dirty check and clean numbers//this is now done as part of the number conversion
-    // this.days[index].decimalTime = Validate.Decimal(this.days[index].decimalTime);
-    // this.days[index].hours = Validate.Integer(this.days[index].hours);
-    // this.days[index].min = Validate.Integer(this.days[index].min);
-
-    //if old time then subtract and add new time.
-    this.timeCheck(index);
+    //clear start and end times... does not make sense to keep them user manually inputs time amount
+    this.days[index].endDate = null;
+    this.days[index].startDate = null;
 
     //convert hour min to decimal
     this.days[index].decimalTime = ConvertTime.HourMin2Dec(this.days[index].hours, this.days[index].min);
@@ -86,45 +72,43 @@ export class AppComponent {
     this.days[index].min = ConvertTime.Dec2Min(this.days[index].decimalTime);
 
     //Calculate end totals with new subtracted amount
-    this.time.decimal -= this.days[index].decimalTime;
-    this.time.hours = ConvertTime.Dec2Hour(this.time.decimal);
-    this.time.min = ConvertTime.Dec2Min(this.time.decimal);
-
-    //need to save state to reference in order to avoid looping over all calculations each time
-    this.oldTime[index] = this.days[index].decimalTime;
+    this.calcEndTotals(index);
   }
 
 
   //TODO finish to/from time calculation
   calcStartEndTime(index) {
-
     //make sure there is information in both "start" and "end" sections before trying to work with it.
     if(this.days[index].endDate && this.days[index].startDate && this.days[index].endDate.getTime() > this.days[index].startDate.getTime()){
-      //if old time then subtract and add new time.
-      this.timeCheck(index);
 
+      //find out how many milliseconds are between start and end times
       let result:number = this.days[index].endDate.getTime() - this.days[index].startDate.getTime();
 
-      console.log(result);
-      console.log(ConvertTime.MiliSec2Dec(result));
-      console.log("this is the amount of hours between the to and from time...");
+      //update all other fields - based on new start and end times
+      this.days[index].decimalTime = ConvertTime.MiliSec2Dec(result);
+      this.days[index].hours = ConvertTime.Dec2Hour(this.days[index].decimalTime);
+      this.days[index].min = ConvertTime.Dec2Min(this.days[index].decimalTime);
 
-      //Calculate end totals with new subtracted amount
-      this.time.decimal -= this.days[index].decimalTime;
-      this.time.hours = ConvertTime.Dec2Hour(this.time.decimal);
-      this.time.min = ConvertTime.Dec2Min(this.time.decimal);
-
-      this.oldTime[index] = this.days[index].decimalTime;
+      this.calcEndTotals(index);
     }
   }
 
 
-  timeCheck(index) {
+  /**
+   * Calculate end totals. If there is a previous amount then overwrite it with new amount
+   * @param index the index of the day array that is to be edited
+   */
+  calcEndTotals(index){
     if (this.oldTime[index]) {
       this.time.decimal += this.oldTime[index];
       this.time.hours = ConvertTime.Dec2Hour(this.time.decimal);
       this.time.min = ConvertTime.Dec2Min(this.time.decimal);
     }
+    this.time.decimal -= this.days[index].decimalTime;
+    this.time.hours = ConvertTime.Dec2Hour(this.time.decimal);
+    this.time.min = ConvertTime.Dec2Min(this.time.decimal);
+
+    this.oldTime[index] = this.days[index].decimalTime;
   }
 
 }
