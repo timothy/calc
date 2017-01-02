@@ -1,8 +1,13 @@
 /**
- * Created by ^_^ on 12/16/2016.
+ * Created by Timothy on 12/16/2016.
  */
 import {Validate} from "./TimeValidator";
-export class ConvertTime {//TODO add time conversions and add to project
+
+/**
+ * Using this class to convert times will make it easier to change conversion formulas
+ * changing the formaula here will change it every where it is used.
+ */
+export class ConvertTime {
 
  static readonly milliMin: number = 60 * 1000;
  static readonly milliHour: number = 60 * ConvertTime.milliMin;

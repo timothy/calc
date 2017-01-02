@@ -12,9 +12,6 @@ export class AppComponent {
 
   readonly DOW: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   readonly week: number = 7;
-  readonly milliMin: number = 60 * 1000;
-  readonly milliHour: number = 60 * this.milliMin;
-  readonly totalTime: number = 40;// this is total hour amount of time for the entire week
   oldTime: number[] = [];
 
   //---used in the view---
@@ -42,6 +39,7 @@ export class AppComponent {
     }
   }
 
+
   /**
    * This will calculate decimal time and hr/min time based on decimal input
    */
@@ -61,7 +59,7 @@ export class AppComponent {
     //Calculate end totals with new subtracted amount
     this.time.decimal -= this.days[index].decimalTime;//todo find out why totals == NaN
     this.time.hours = ConvertTime.Dec2Hour(this.time.decimal);
-    this.time.min = ConvertTime.Dec2Min(this.time.decimal);//ToDO change other min convertion
+    this.time.min = ConvertTime.Dec2Min(this.time.decimal);//ToDO change other min conversion
 
     //need to save state to reference in order to avoid looping over all calculations each time
     this.oldTime[index] = this.days[index].decimalTime;
@@ -98,8 +96,9 @@ export class AppComponent {
 
 
   //TODO finish to/from time calculation
-  calcToFromTime(index) {
-    //make sure there is information in both from and to before trying to work with it.
+  calcStartEndTime(index) {
+
+    //make sure there is information in both "start" and "end" sections before trying to work with it.
     if(this.days[index].endDate && this.days[index].startDate && this.days[index].endDate.getTime() > this.days[index].startDate.getTime()){
       //if old time then subtract and add new time.
       this.timeCheck(index);
@@ -110,9 +109,10 @@ export class AppComponent {
       console.log(ConvertTime.MiliSec2Dec(result));
       console.log("this is the amount of hours between the to and from time...");
 
+      //Calculate end totals with new subtracted amount
       this.time.decimal -= this.days[index].decimalTime;
-      this.time.hours = Math.floor(this.time.decimal);
-      this.time.min = Math.floor(this.time.decimal * 60) % 60;
+      this.time.hours = ConvertTime.Dec2Hour(this.time.decimal);
+      this.time.min = ConvertTime.Dec2Min(this.time.decimal);
 
       this.oldTime[index] = this.days[index].decimalTime;
     }
@@ -122,8 +122,8 @@ export class AppComponent {
   timeCheck(index) {
     if (this.oldTime[index]) {
       this.time.decimal += this.oldTime[index];
-      this.time.hours = Math.floor(this.time.decimal);
-      this.time.min = Math.floor(this.time.decimal * 60) % 60;
+      this.time.hours = ConvertTime.Dec2Hour(this.time.decimal);
+      this.time.min = ConvertTime.Dec2Min(this.time.decimal);
     }
   }
 
