@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {DayTimeTracker, TotalTime} from "./types";
-import {Validate} from "./classes/TimeValidator";// no longer needed -- this is now happening as part of the convert time class
+import {Validate} from "./classes/NumValidator";
 import {ConvertTime} from "./classes/ConvertTime";
 
 @Component({
@@ -14,7 +14,7 @@ export class AppComponent {
   readonly week: number = 7;
   oldTime: number[] = [];
 
-  //---used in the view---
+  //---variables below are used in the view---
   readonly startTimeOpts = {
     minuteStep: 1,
     showMeridian: true,
@@ -41,6 +41,7 @@ export class AppComponent {
 
   /**
    * This will calculate decimal time and hr/min time based on decimal input
+   * and will update all other field to reflect this new time
    */
   calcDecTime(index) {
     //clear start and end times... does not make sense to keep them user manually inputs time amount
@@ -59,6 +60,8 @@ export class AppComponent {
 
   /**
    * This will calculate decimal time and hr/min time based on hr/min input
+   * and will update all other field to reflect this new time
+   * @param index the index of the day array that is to be edited
    */
   CalcTime(index) {
     //clear start and end times... does not make sense to keep them user manually inputs time amount
@@ -77,8 +80,11 @@ export class AppComponent {
     this.calcEndTotals(index);
   }
 
-
-  //TODO finish to/from time calculation
+  /**
+   * This will calculate the amount of time between the start and end time boxes
+   * and will update all other field to reflect this new time
+   * @param index the index of the day array that is to be edited
+   */
   calcStartEndTime(index) {
     //make sure there is information in both "start" and "end" sections before trying to work with it.
     if(this.days[index].endDate && this.days[index].startDate && this.days[index].endDate.getTime() > this.days[index].startDate.getTime()){

@@ -6,7 +6,7 @@ export class Validate {
 
   /**
    * try to strip out all non-numeric characters wile leaving in '.'
-   * if that does not work return 0
+   * if that does not return a valid float than return 0
    * @param checkItem a potential number
    * @returns {number}
    */
@@ -24,7 +24,7 @@ export class Validate {
 
   /**
    * try to strip out all non-numeric characters
-   * if that does not work return 0
+   * if that does not return an integer than return 0
    * @param checkItem a potential number
    * @returns {number}
    */
