@@ -1,8 +1,6 @@
 # Calc
 Simple app to show remaining time until a person hits a 40hr week. This was mainly built to help hourly employees know when they hit their max hour limit. There is still a lot of work to do but the basic functionality is there and accurate.
 
-[A Plunk of this code can be found here](https://embed.plnkr.co/FaI8QsQrClDdJDJfjjNw/)
-
 
 ## Development progress
 I originally made this app using **Angular 1.4.0** and **JavaScript/ECMAScript 5**. I have since rewrote it using **Angular 2.2.3** and **Typescript ~2.0.3**. When I rewrote it, I added some new features and cleaned up the code a lot. Still needs some work but all the calculations should be correct(hopefully, I still need to write tests).
