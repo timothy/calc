@@ -44,7 +44,8 @@ export class AppComponent {
    * and will update all other field to reflect this new time
    */
   calcDecTime(index) {
-    if(!(this.days[index].decimalTime.toString()[this.days[index].decimalTime.toString().length -1] === '.')) {
+    let decTime:string = this.days[index].decimalTime.toString();
+    if(!(decTime[decTime.length -1] === '.' && decTime.split(".").length - 1 <= 1) && !(decTime[decTime.length -1] === '0')) {
       //clear start and end times... does not make sense to keep them user manually inputs time amount
       this.days[index].endDate = null;
       this.days[index].startDate = null;
