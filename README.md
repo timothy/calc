@@ -12,7 +12,7 @@ Classes are located _src/app/classes_
 * ConvertTime
   * This is where all time conversions take place. Any new type of time conversion should be added as a method to this class and used through this class.
 * NumValidator
-  * This is will validate all numbers. Right now only Decimal numbers and Integers are validated. This adds better **bad input** handling than the JavaScript's _parseInt_ and _parseFloat_ methods
+  * This will validate all numbers. Right now only Decimal numbers and Integers are validated. This adds better **bad input** handling than the JavaScript's _parseInt_ and _parseFloat_ methods
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
