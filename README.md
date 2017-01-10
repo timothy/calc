@@ -3,9 +3,16 @@ Simple app to show remaining time until a person hits a 40hr week. This was main
 
 
 ## Development progress
-I originally made this app using **Angular 1.4.0** and **JavaScript/ECMAScript 5**. I have since rewrote it using **Angular 2.2.3** and **Typescript ~2.0.3**. When I rewrote it, I added some new features and cleaned up the code a lot. Still needs some work but all the calculations should be correct(hopefully, I still need to write tests).
 
-Next steps will be to abstract the basic calculator functionality into a reusable and separate class that the component will use... After this I need to create automated tests to check the edge case scenarios.
+Updated to **Angular 2.3.1** + **TypeScript ~2.0.3**
+
+The main app work flow is located at _src/app/app.component.html_ and _src/app/app.component.ts_
+
+Classes are located _src/app/classes_
+* ConvertTime
+  * This is where all time conversions take place. Any new type of time conversion should be added as a method to this class and used through this class.
+* NumValidator
+  * This is will validate all numbers. Right now only Decimal numbers and Integers are validated. This adds better **bad input** handling than the JavaScript's _parseInt_ and _parseFloat_ methods
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
@@ -29,6 +36,6 @@ Before running the tests make sure you are serving the app via `ng serve`.
 
 ## Further help
 
-I used [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.22-1 to create the shell of this project.
+**Note:** to "Run" build, test, or serve this project must have [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24 or greater installed.
 
 To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
