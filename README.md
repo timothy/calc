@@ -1,6 +1,18 @@
 # Calc
 Simple app to show remaining time until a person hits a 40hr week. This was mainly built to help hourly employees know when they hit their max hour limit. There is still a lot of work to do but the basic functionality is there and accurate.
 
+## Getting started
+
+####Prerequisite programs
+* [Node/npm](https://nodejs.org/) 
+
+* Angular CLI - in your CMD/Terminal `npm install -g angular-cli`
+
+####running app in browser
+* Install local dependencies `npm install`
+
+* Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
 
 ## Development progress
 
@@ -14,6 +26,7 @@ Classes are located _src/app/classes_
 * NumValidator
   * This will validate all numbers. Right now only Decimal numbers and Integers are validated. This adds better **bad input** handling than the JavaScript's _parseInt_ and _parseFloat_ methods
 
+bower_components and typings files are now included in the repo. Some of the repos in bower_components require a less build. To ovoid long complex build process I included these things in the local repo.
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
