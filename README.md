@@ -1,12 +1,12 @@
 # Calc
-Simple app to show remaining time until a person hits a 40hr week. This was mainly built to help hourly employees know when they hit their max hour limit. There is still a lot of work to do but the basic functionality is there and accurate.
+Simple app to show remaining time until a person hits a 40hr week. This was mainly built to help hourly employees know when they hit their max hour limit.
 
 ## Getting started
 
 ####Prerequisite programs
 * [Node/npm](https://nodejs.org/) 
 
-* Angular CLI - in your CMD/Terminal `npm install -g angular-cli`
+* Angular CLI - To install execute-> `npm install -g angular-cli` <-in your CMD/Terminal 
 
 ####running app in browser
 * Install local dependencies `npm install`
