@@ -45,7 +45,10 @@ export class AppComponent {
    */
   calcDecTime(index) {
     let decTime:string = this.days[index].decimalTime.toString();
-    if(!(decTime[decTime.length -1] === '.' && decTime.split(".").length - 1 <= 1) && !(decTime[decTime.length -1] === '0')) {
+    //let dotCount2 = decTime.split(".").length - 1;//another solution
+    let dotCount = (decTime.match(/\./g) || []).length;
+
+    if(!(decTime[decTime.length -1] === '.' && dotCount <= 1) && !(decTime[decTime.length -1] === '0' && dotCount === 1)) {
       //clear start and end times... does not make sense to keep them user manually inputs time amount
       this.days[index].endDate = null;
       this.days[index].startDate = null;
