@@ -17,7 +17,7 @@ export class Validate {
       } else {
         return parseFloat(checkItem.toString().replace(/[^0-9.]/g, ''));
       }
-    }else {
+    } else {
       return parseFloat(checkItem);
     }
   }
@@ -29,16 +29,14 @@ export class Validate {
    * @returns {number}
    */
   static Integer(checkItem: any): number {
-    if (isNaN(checkItem) || !parseInt(checkItem)) {
-      if (isNaN(parseInt(checkItem.toString().replace(/\D/g, ''))) || !parseInt(checkItem.toString().replace(/\D/g, ''))) {
+    if (isNaN(checkItem) || !parseInt(checkItem, 10)) {
+      if (isNaN(parseInt(checkItem.toString().replace(/\D/g, ''), 10)) || !parseInt(checkItem.toString().replace(/\D/g, ''), 10)) {
         return 0;
       } else {
-        return parseInt(checkItem.toString().replace(/\D/g, ''));
+        return parseInt(checkItem.toString().replace(/\D/g, ''), 10);
       }
     } else {
-      return parseInt(checkItem);
+      return parseInt(checkItem, 10);
     }
   }
-
-
 }

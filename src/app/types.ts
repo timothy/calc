@@ -12,7 +12,7 @@ interface DayTimeTracker {
   hours: number;
   min: number;
   decimalTime: number;
-  index:number;
+  index: number;
   startDate?: Date;
   endDate?: Date;
 }

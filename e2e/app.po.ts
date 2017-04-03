@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class CalcPage {
+export class WorkTimeCountDownDesktopPage {
   navigateTo() {
     return browser.get('/');
   }

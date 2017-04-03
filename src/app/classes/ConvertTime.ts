@@ -1,7 +1,7 @@
 /**
  * Created by Timothy on 12/16/2016.
  */
-import {Validate} from "./NumValidator";
+import {Validate} from './NumValidator';
 
 /**
  * Using this class to convert times will make it easier to change conversion formulas
@@ -9,8 +9,8 @@ import {Validate} from "./NumValidator";
  */
 export class ConvertTime {
 
- static readonly milliMin: number = 60 * 1000;
- static readonly milliHour: number = 60 * ConvertTime.milliMin;
+  static readonly milliMin: number = 60 * 1000;
+  static readonly milliHour: number = 60 * ConvertTime.milliMin;
 
   /**
    * This will convert hours and min from their millisecond form to decimal form
@@ -19,7 +19,7 @@ export class ConvertTime {
    * @returns {number} a decimal number that represents both minutes and hours
    * @constructor
    */
-  static HourMin2Dec(hours: number, min:number): number {
+  static HourMin2Dec(hours: number, min: number): number {
     hours = Validate.Integer(hours);
     min = Validate.Integer(min);
     return ((hours * this.milliHour) + (min * this.milliMin)) / this.milliHour;
@@ -31,7 +31,7 @@ export class ConvertTime {
    * @returns {number} an amount of time that is represented by a decimal number
    * @constructor
    */
-  static MiliSec2Dec(milliSec: number):number {//todo add validation
+  static MiliSec2Dec(milliSec: number): number {// todo add validation
     return milliSec / this.milliHour;
   }
 
@@ -54,11 +54,12 @@ export class ConvertTime {
    * @returns {number}
    * @constructor
    */
-  static Dec2Min(decimalTime: number): number {//TODO round to the nearest whole number...
+  static Dec2Min(decimalTime: number): number {// TODO round to the nearest whole number...
     decimalTime = Validate.Decimal(decimalTime);
-    return Math.round((decimalTime - Math.floor(decimalTime)) * 60);//might want to start rounding to nearest min instead of dropping remainder...
 
-    //or maybe: return Math.floor(decimalTime * 60) % 60;
-    //or maybe: return Math.floor(((decimalTime * this.milliHour) % this.milliHour)/this.milliMin);
+    return Math.round((decimalTime - Math.floor(decimalTime)) * 60);
+
+    // or maybe: return Math.floor(decimalTime * 60) % 60;
+    // or maybe: return Math.floor(((decimalTime * this.milliHour) % this.milliHour)/this.milliMin);
   }
 }

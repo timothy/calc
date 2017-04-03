@@ -1,4 +1,5 @@
-# Calc
+# WorkTimeCountDownDesktop
+
 Simple app to show remaining time until a person hits a 40hr week. This was mainly built to help hourly employees know when they hit their max hour limit.
 
 ## Getting started
@@ -13,10 +14,9 @@ Simple app to show remaining time until a person hits a 40hr week. This was main
 
 * Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-
 ## Development progress
 
-Updated to **Angular 2.3.1** + **TypeScript ~2.0.3**
+Updated to **Angular 4.0.0** + **TypeScript ~2.2.0** + bootstrap ^3.3.7
 
 The main app work flow is located at _src/app/app.component.html_ and _src/app/app.component.ts_
 
@@ -26,23 +26,22 @@ Classes are located _src/app/classes_
 * NumValidator
   * This will validate all numbers. Right now only Decimal numbers and Integers are validated. This adds better **bad input** handling than the JavaScript's _parseInt_ and _parseFloat_ methods
 
-bower_components and typings files are now included in the repo. Some of the repos in bower_components require a less build. To ovoid long complex build process I included these things in the local repo.
+bower_components should not be used with webpack. Use npm node_modules for all dependencies.
+
 ## Development server
+
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class`.
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
 
 ## Build
-####Note: This Functionality does not work in the current app.
-Currently the only way to test this out is through the `ng serve` command or to port it over to a standalone angular2 app without using Angular cli. Angular cli is still in beta and some of the functionality is very error prone.
 
-~~Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.~~
-
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
 ## Further help
 
-**Note:** to "Run" build, test, or serve this project must have [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24 or greater installed.
+**Note:** to "Run" build, test, or serve this project must have [angular-cli](https://github.com/angular/angular-cli) version 1.0.0 or greater installed.
 
 To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

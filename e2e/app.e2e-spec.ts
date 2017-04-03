@@ -1,10 +1,10 @@
-import { CalcPage } from './app.po';
+import { WorkTimeCountDownDesktopPage } from './app.po';
 
-describe('calc App', function() {
-  let page: CalcPage;
+describe('work-time-count-down-desktop App', () => {
+  let page: WorkTimeCountDownDesktopPage;
 
   beforeEach(() => {
-    page = new CalcPage();
+    page = new WorkTimeCountDownDesktopPage();
   });
 
   it('should display message saying app works', () => {
