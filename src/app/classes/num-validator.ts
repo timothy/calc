@@ -1,9 +1,4 @@
-/**
- * Created by Timothy on 12/15/2016.
- */
-
-export class Validate {
-
+export class NumValidator {
   /**
    * try to strip out all non-numeric characters wile leaving in '.'
    * if that does not return a valid float than return 0
