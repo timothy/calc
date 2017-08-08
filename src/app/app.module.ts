@@ -1,8 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { NKDatetimeModule } from 'ng2-datetime/ng2-datetime';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
@@ -12,9 +11,8 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpModule,
-    NKDatetimeModule
+    NKDatetimeModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
