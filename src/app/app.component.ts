@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {DayTimeTracker, TotalTime} from './types';
-import {Validate} from './classes/NumValidator';
-import {ConvertTime} from './classes/ConvertTime';
+import {NumValidator as Validate} from './classes/num-validator';
+import {ConvertTime} from './classes/convert-time';
 
 @Component({
   selector: 'app-root',
@@ -90,7 +90,8 @@ export class AppComponent {
    */
   calcStartEndTime(index) {
     // make sure there is information in both "start" and "end" sections before trying to work with it.
-    if (this.days[index].endDate && this.days[index].startDate && this.days[index].endDate.getTime() > this.days[index].startDate.getTime()) {
+    if (this.days[index].endDate && this.days[index].startDate &&
+      this.days[index].endDate.getTime() > this.days[index].startDate.getTime()) {
 
       // find out how many milliseconds are between start and end times
       const result: number = this.days[index].endDate.getTime() - this.days[index].startDate.getTime();
